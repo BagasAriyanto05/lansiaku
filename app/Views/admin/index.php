@@ -3,52 +3,119 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <?php
+        $role = "admin";
+        if ($role == "perawat") {
+        ?>
+            <!-- Sidebar -->
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon">
-                    <i class="fa-solid fa-person-cane fa-flip fa-xl"></i>
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div class="sidebar-brand-icon">
+                        <i class="fa-solid fa-person-cane fa-flip fa-xl"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">LANSIAKU</div>
+                </a>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link" href=<?= base_url("admin/lansia"); ?>>
+                        <i class="fa-solid fa-person-cane fa-lg"></i>
+                        <span>Lansia</span>
+                    </a>
+                </li>
+
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
                 </div>
-                <div class="sidebar-brand-text mx-3">LANSIAKU</div>
-            </a>
+            </ul>
+            <!-- End of Sidebar -->
+        <?php
+        } else if ($role == "lansia") {
+        ?>
+            <!-- Sidebar -->
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link active" href=<?= base_url("admin"); ?>>
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider mb-0">
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href=<?= base_url("admin/perawat"); ?>>
-                    <i class="fa-solid fa-user-nurse fa-lg"></i>
-                    <span>Perawat</span>
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div class="sidebar-brand-icon">
+                        <i class="fa-solid fa-person-cane fa-flip fa-xl"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">LANSIAKU</div>
                 </a>
-            </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href=<?= base_url("admin/lansia"); ?>>
-                    <i class="fa-solid fa-person-cane fa-lg"></i>
-                    <span>Lansia</span>
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link" href=<?= base_url("admin/lansia"); ?>>
+                        <i class="fa-solid fa-person-cane fa-lg"></i>
+                        <span>Lansia</span>
+                    </a>
+                </li>
+
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+            </ul>
+            <!-- End of Sidebar -->
+        <?php
+        } else {
+        ?>
+            <!-- Sidebar -->
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div class="sidebar-brand-icon">
+                        <i class="fa-solid fa-person-cane fa-flip fa-xl"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">LANSIAKU</div>
                 </a>
-            </li>
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-        </ul>
-        <!-- End of Sidebar -->
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item active">
+                    <a class="nav-link active" href=<?= base_url("admin"); ?>>
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span></a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider mb-0">
+
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link" href=<?= base_url("admin/perawat"); ?>>
+                        <i class="fa-solid fa-user-nurse fa-lg"></i>
+                        <span>Perawat</span>
+                    </a>
+                </li>
+
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link" href=<?= base_url("admin/lansia"); ?>>
+                        <i class="fa-solid fa-person-cane fa-lg"></i>
+                        <span>Lansia</span>
+                    </a>
+                </li>
+
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+            </ul>
+            <!-- End of Sidebar -->
+        <?php
+        }
+        ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -120,7 +187,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xl font-weight-bold text-primary text-uppercase mb-1">
                                                 Jumlah Perawat</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">50</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= count($perawat); ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa-solid fa-user-nurse fa-xl"></i>
@@ -138,7 +205,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xl font-weight-bold text-success text-uppercase mb-1">
                                                 Jumlah Lansia</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= count($lansia); ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa-solid fa-person-cane fa-xl"></i>

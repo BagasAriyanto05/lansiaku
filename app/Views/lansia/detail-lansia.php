@@ -3,6 +3,8 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
+        <?php //dd($lansia) 
+        ?>
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -16,28 +18,9 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href=<?= base_url("admin"); ?>>
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider mb-0">
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href=<?= base_url("admin/perawat"); ?>>
-                    <i class="fa-solid fa-user-nurse fa-lg"></i>
-                    <span>Perawat</span>
-                </a>
-            </li>
-
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link collapsed" href=<?= base_url("admin/lansia"); ?>>
+                <a class="nav-link collapsed" href=<?= base_url("lansia/" . $lansia[0]['id'] . ""); ?>>
                     <i class="fa-solid fa-person-cane fa-lg"></i>
                     <span>Lansia</span>
                 </a>
@@ -103,16 +86,16 @@
                     ?>
                     <div class="card" style="width: 100%;">
                         <div class="card-body">
-                            <div class="content d-flex justify-content-between">
+                            <div class="content">
                                 <!-- <div class="img-profil" style="margin-right: 30px;">
                                     <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width: 250px;" alt="">
                                 </div> -->
-                                <div class="deskripsi-profil flex-grow-1">
-                                    <form action=<?= base_url("admin/lansia/detail-lansia/update/" . $lansia[0]['id'] . ""); ?> method="POST">
+                                <div class="deskripsi-profil">
+                                    <form action=<?= base_url("lansia/update/" . $lansia[0]['id'] . ""); ?> method="POST">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="nama">Nama</label>
-                                                <input type="text" class="form-control" id="nama" name="nama" value=<?= $lansia[0]['nama']; ?>>
+                                                <input type="text" class="form-control" id="nama" name="nama" value="<?= $lansia[0]['nama'] ?>">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="bb">Berat Badan</label>
@@ -190,7 +173,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary" style="font-size: 125%;">Kegiatan</h6>
-                            <button type="button" class="btn btn-primary mt-1 mb-2" data-toggle="modal" data-target="#tambah_lansia">Tambah Kegiatan</button>
+                            <!-- <button type="button" class="btn btn-primary mt-1 mb-2" data-toggle="modal" data-target="#tambah_lansia">Tambah Kegiatan</button> -->
 
                             <!-- Modal Tambah Lansia -->
                             <div class="modal fade" id="tambah_lansia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -260,14 +243,14 @@
                                             <th>Kegiatan</th>
                                             <th>Mulai</th>
                                             <th>Selesai</th>
-                                            <th>Action</th>
+                                            <!-- <th>Action</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php if (empty($kegiatan)) {
                                         ?>
                                             <tr>
-                                                <td colspan="6">Tidak ada data</td>
+                                                <td colspan="5">Tidak ada data</td>
                                             </tr>
                                         <?php
                                         } else {
@@ -283,128 +266,6 @@
                                                     <td><?= $a['kegiatan']; ?></td>
                                                     <td><?= $a['mulai'] ?></td>
                                                     <td><?= $a['selesai'] ?></td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-warning btn-circle btn-sm" data-toggle="modal" data-target="#edit_lansia<?= $a['id'] ?>">
-                                                            <i class="fa-solid fa-pencil"></i>
-                                                        </button>
-
-                                                        <!-- Modal Edit lansia -->
-                                                        <div class="modal fade" id="edit_lansia<?= $a['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <form method="POST" action=<?= base_url("admin/lansia/detail-lansia/edit/" . $a['id'] . "/" . $lansia[0]['id'] . ""); ?>>
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Kegiatan Lansia</h5>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <div class="row">
-                                                                                <div class="col">
-                                                                                    <label for="#id">ID</label>
-                                                                                    <input type="text" name="id" id="id" class="form-control" placeholder="ID" value="<?= $a['id']; ?>" disabled>
-                                                                                </div>
-                                                                                <div class="col">
-                                                                                    <label for="#tanggal">Tanggal</label>
-                                                                                    <input autocomplete="off" type="text" id="tanggal" name="tanggal" class="form-control" placeholder="Tanggal" value="<?= $a['tanggal']; ?>">
-                                                                                </div>
-                                                                            </div>
-                                                                            <br>
-                                                                            <div class="row">
-                                                                                <div class="col">
-                                                                                    <label for="#mulai">Mulai</label>
-                                                                                    <input autocomplete="off" type="text" id="mulai" name="mulai" class="form-control" placeholder="Mulai" value="<?= $a['mulai']; ?>">
-                                                                                </div>
-                                                                                <div class="col">
-                                                                                    <label for="#selesai">Selesai</label>
-                                                                                    <input autocomplete="off" type="text" id="selesai" name="selesai" class="form-control" placeholder="Selesai" value="<?= $a['selesai']; ?>">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col">
-                                                                                    <label for="#kegiatan">Kegiatan</label>
-                                                                                    <input autocomplete="off" type="text" id="kegiatan" name="kegiatan" class="form-control" placeholder="Kegiatan" value="<?= $a['kegiatan']; ?>">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row" hidden>
-                                                                                <div class="col">
-                                                                                    <label for="#id_lansia">ID Lansia</label>
-                                                                                    <input type="text" id="id_lansia" name="id_lansia" class="form-control" placeholder="ID Lansia" value=<?= $lansia[0]['id']; ?>>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        <!-- End Modal Edit lansia -->
-                                                        <!-- 
-                                                        <a href=<?= base_url("admin/lansia/detail-lansia"); ?> class="btn btn-info btn-circle btn-sm">
-                                                            <i class="fas fa-info-circle"></i>
-                                                        </a> -->
-
-                                                        <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#hapus_lansia<?= $a['id']; ?>">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-
-                                                        <!-- Modal Hapus lansia -->
-                                                        <div class="modal fade" id="hapus_lansia<?= $a['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <form method="POST" action=<?= base_url("admin/lansia/detail-lansia/delete/" . $a['id'] . "/" . $lansia[0]['id'] . ""); ?>>
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Kegiatan Lansia</h5>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-
-                                                                            <div class="row">
-                                                                                <div class="col">
-                                                                                    <label for="#id">ID</label>
-                                                                                    <input type="text" name="id" id="id" class="form-control" placeholder="ID" value="<?= $a['id']; ?>" disabled>
-                                                                                </div>
-                                                                                <div class="col">
-                                                                                    <label for="#tanggal">Tanggal</label>
-                                                                                    <input type="text" id="tanggal" name="tanggal" class="form-control" placeholder="Tanggal" value="<?= $a['tanggal']; ?>" disabled>
-                                                                                </div>
-                                                                            </div>
-                                                                            <br>
-                                                                            <div class="row">
-                                                                                <div class="col">
-                                                                                    <label for="#mulai">Mulai</label>
-                                                                                    <input type="text" id="mulai" name="mulai" class="form-control" placeholder="Mulai" value="<?= $a['mulai']; ?>" disabled>
-                                                                                </div>
-                                                                                <div class="col">
-                                                                                    <label for="#selesai">Selesai</label>
-                                                                                    <input type="text" id="selesai" name="selesai" class="form-control" placeholder="Selesai" value="<?= $a['selesai']; ?>" disabled>
-                                                                                </div>
-                                                                            </div>
-                                                                            <br>
-                                                                            <div class="row">
-                                                                                <div class="col">
-                                                                                    <label for="#kegiatan">Kegiatan</label>
-                                                                                    <input type="text" id="kegiatan" name="kegiatan" class="form-control" placeholder="Kegiatan" value="<?= $a['kegiatan']; ?>" disabled>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                            <button type="submit" class="btn btn-primary">Hapus Data</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        <!-- End Modal Hapus lansia -->
-
-                                                    </td>
                                                 </tr>
                                             <?php
                                                 $no++;

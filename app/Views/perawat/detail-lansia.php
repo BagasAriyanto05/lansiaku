@@ -16,28 +16,9 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href=<?= base_url("admin"); ?>>
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider mb-0">
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href=<?= base_url("admin/perawat"); ?>>
-                    <i class="fa-solid fa-user-nurse fa-lg"></i>
-                    <span>Perawat</span>
-                </a>
-            </li>
-
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link collapsed" href=<?= base_url("admin/lansia"); ?>>
+            <li class="nav-item">
+                <a class="nav-link" href=<?= base_url("/perawat"); ?>>
                     <i class="fa-solid fa-person-cane fa-lg"></i>
                     <span>Lansia</span>
                 </a>
@@ -108,11 +89,11 @@
                                     <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width: 250px;" alt="">
                                 </div> -->
                                 <div class="deskripsi-profil flex-grow-1">
-                                    <form action=<?= base_url("admin/lansia/detail-lansia/update/" . $lansia[0]['id'] . ""); ?> method="POST">
+                                    <form action=<?= base_url("perawat/detail-lansia/update/" . $lansia[0]['id'] . ""); ?> method="POST">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="nama">Nama</label>
-                                                <input type="text" class="form-control" id="nama" name="nama" value=<?= $lansia[0]['nama']; ?>>
+                                                <input type="text" class="form-control" id="nama" name="nama" value="<?= $lansia[0]['nama']; ?>">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="bb">Berat Badan</label>
@@ -196,7 +177,7 @@
                             <div class="modal fade" id="tambah_lansia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form method="POST" action=<?= base_url("admin/lansia/detail-lansia/add"); ?>>
+                                        <form method="POST" action=<?= base_url("perawat/detail-lansia/add"); ?>>
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Tambah Data Kegiatan</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -291,7 +272,7 @@
                                                         <!-- Modal Edit lansia -->
                                                         <div class="modal fade" id="edit_lansia<?= $a['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
-                                                                <form method="POST" action=<?= base_url("admin/lansia/detail-lansia/edit/" . $a['id'] . "/" . $lansia[0]['id'] . ""); ?>>
+                                                                <form method="POST" action=<?= base_url("perawat/detail-lansia/edit/" . $a['id'] . "/" . $lansia[0]['id'] . ""); ?>>
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title" id="exampleModalLabel">Edit Kegiatan Lansia</h5>
@@ -344,7 +325,7 @@
                                                         </div>
                                                         <!-- End Modal Edit lansia -->
                                                         <!-- 
-                                                        <a href=<?= base_url("admin/lansia/detail-lansia"); ?> class="btn btn-info btn-circle btn-sm">
+                                                        <a href=<?= base_url("perawat/detail-lansia"); ?> class="btn btn-info btn-circle btn-sm">
                                                             <i class="fas fa-info-circle"></i>
                                                         </a> -->
 
@@ -355,7 +336,7 @@
                                                         <!-- Modal Hapus lansia -->
                                                         <div class="modal fade" id="hapus_lansia<?= $a['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
-                                                                <form method="POST" action=<?= base_url("admin/lansia/detail-lansia/delete/" . $a['id'] . "/" . $lansia[0]['id'] . ""); ?>>
+                                                                <form method="POST" action=<?= base_url("perawat/detail-lansia/delete/" . $a['id'] . "/" . $lansia[0]['id'] . ""); ?>>
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title" id="exampleModalLabel">Hapus Kegiatan Lansia</h5>

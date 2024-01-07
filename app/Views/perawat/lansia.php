@@ -3,119 +3,33 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <?php
-        $role = "admin";
-        if ($role == "perawat") {
-        ?>
-            <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                    <div class="sidebar-brand-icon">
-                        <i class="fa-solid fa-person-cane fa-flip fa-xl"></i>
-                    </div>
-                    <div class="sidebar-brand-text mx-3">LANSIAKU</div>
-                </a>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
-                <!-- Nav Item - Utilities Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("admin/lansia"); ?>>
-                        <i class="fa-solid fa-person-cane fa-lg"></i>
-                        <span>Lansia</span>
-                    </a>
-                </li>
-
-                <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon">
+                    <i class="fa-solid fa-person-cane fa-flip fa-xl"></i>
                 </div>
-            </ul>
-            <!-- End of Sidebar -->
-        <?php
-        } else if ($role == "lansia") {
-        ?>
-            <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <div class="sidebar-brand-text mx-3">LANSIAKU</div>
+            </a>
 
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                    <div class="sidebar-brand-icon">
-                        <i class="fa-solid fa-person-cane fa-flip fa-xl"></i>
-                    </div>
-                    <div class="sidebar-brand-text mx-3">LANSIAKU</div>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href=<?= base_url("/perawat"); ?>>
+                    <i class="fa-solid fa-person-cane fa-lg"></i>
+                    <span>Lansia</span>
                 </a>
+            </li>
 
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
-                <!-- Nav Item - Utilities Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("admin/lansia"); ?>>
-                        <i class="fa-solid fa-person-cane fa-lg"></i>
-                        <span>Lansia</span>
-                    </a>
-                </li>
-
-                <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
-            </ul>
-            <!-- End of Sidebar -->
-        <?php
-        } else {
-        ?>
-            <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                    <div class="sidebar-brand-icon">
-                        <i class="fa-solid fa-person-cane fa-flip fa-xl"></i>
-                    </div>
-                    <div class="sidebar-brand-text mx-3">LANSIAKU</div>
-                </a>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
-
-                <!-- Nav Item - Dashboard -->
-                <li class="nav-item active">
-                    <a class="nav-link active" href=<?= base_url("admin"); ?>>
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider mb-0">
-
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("admin/perawat"); ?>>
-                        <i class="fa-solid fa-user-nurse fa-lg"></i>
-                        <span>Perawat</span>
-                    </a>
-                </li>
-
-                <!-- Nav Item - Utilities Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link" href=<?= base_url("admin/lansia"); ?>>
-                        <i class="fa-solid fa-person-cane fa-lg"></i>
-                        <span>Lansia</span>
-                    </a>
-                </li>
-
-                <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
-            </ul>
-            <!-- End of Sidebar -->
-        <?php
-        }
-        ?>
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -178,7 +92,7 @@
                             <div class="modal fade" id="tambah_lansia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form method="POST" action=<?= base_url("admin/lansia"); ?>>
+                                        <form method="POST" action=<?= base_url("perawat"); ?>>
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Tambah Data Lansia</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -286,7 +200,7 @@
                                                         <!-- Modal Edit lansia -->
                                                         <div class="modal fade" id="edit_lansia<?= $a['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
-                                                                <form method="POST" action=<?= base_url("admin/lansia/" . $a['id'] . ""); ?>>
+                                                                <form method="POST" action=<?= base_url("perawat/" . $a['id'] . ""); ?>>
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title" id="exampleModalLabel">Edit Data Lansia</h5>
@@ -368,7 +282,7 @@
                                                         </div>
                                                         <!-- End Modal Edit lansia -->
 
-                                                        <a href=<?= base_url("admin/lansia/detail-lansia/" . $a['id'] . ""); ?> class="btn btn-info btn-circle btn-sm">
+                                                        <a href=<?= base_url("perawat/detail-lansia/" . $a['id'] . ""); ?> class="btn btn-info btn-circle btn-sm">
                                                             <i class="fas fa-info-circle"></i>
                                                         </a>
 
@@ -379,7 +293,7 @@
                                                         <!-- Modal Hapus lansia -->
                                                         <div class="modal fade" id="hapus_lansia<?= $a['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
-                                                                <form method="POST" action=<?= base_url("admin/lansia/delete/" . $a['id'] . ""); ?>>
+                                                                <form method="POST" action=<?= base_url("perawat/delete/" . $a['id'] . ""); ?>>
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title" id="exampleModalLabel">Hapus Data Lansia</h5>
